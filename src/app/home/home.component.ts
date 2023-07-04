@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { DbService } from '../DbService/db.service';
-import { NgModel } from '@angular/forms';
 import { Expense,Income } from '../DexieService/dexie.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
   constructor(private dbService: DbService) { }
