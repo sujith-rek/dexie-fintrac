@@ -11,6 +11,7 @@ import { ExpenseComponent } from './expense/expense.component';
 import { ExpenseCardComponent } from './expense-card/expense-card.component';
 import { IncomeCardComponent } from './income-card/income-card.component';
 import { IncomeComponent } from './income/income.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { IncomeComponent } from './income/income.component';
     HomeComponent,
     IncomeCardComponent,
     IncomeComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

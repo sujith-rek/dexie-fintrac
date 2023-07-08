@@ -64,4 +64,14 @@ export class DbService {
     return await db.incomes.where('date').equals(date).toArray();
   }
 
+  async exportExpenses(){
+    const expenses = await this.getExpenses();
+    let csv = 'id,name,amount,category,date,mode\n';
+    expenses.forEach(expense => {
+      csv += `${expense.id},${expense.name},${expense.amount},${expense.category},${expense.date},${expense.mode}\n`;
+    }
+    );
+    return csv;
+  }
+
 }
