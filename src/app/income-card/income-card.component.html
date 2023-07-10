@@ -1,1 +1,64 @@
-<p>income-card works!</p>
+<div class="IncomeCard" *ngIf="showCard">
+    <div class="IncomeCard--Header">
+        <h2>Add Income</h2>
+        <button mat-icon-button
+        (click) = "closeCard()"
+        >
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+    <form class="IncomeCard--Form">
+        <label for="name">Name</label>
+        <input
+            type="text"
+            placeholder="name"
+            name="name"
+            [(ngModel)]="name"
+            required
+        >
+        <label for="amount">Amount</label>
+        <input 
+            type="number"
+            placeholder="amount"
+            name="amount"
+            [(ngModel)]="amount"
+            required
+        >
+        <label for="category">Category</label>
+        <input 
+            type="text"
+            placeholder="category"
+            name="category"
+            [(ngModel)]="category"
+            required
+        >
+        <label for="date">Date</label>
+        <input
+            type="date"
+            placeholder="date"
+            name="date"
+            [(ngModel)]="date"
+            required
+        >
+        <label for="mode">Mode</label>
+        <input 
+            name="mode"
+            type="text"
+            placeholder="mode"
+            [(ngModel)]="mode"
+            required
+        >
+        <button
+            mat-raised-button
+            *ngIf="!name || !amount || !category || !date || !mode ; else elseBlock"
+            disabled>Submit</button>
+        <ng-template #elseBlock>
+            <button
+                class="IncomeCard--Form--Submit "
+                type="submit"
+                mat-raised-button
+                (click)="onSubmit()"
+                >Submit</button>
+        </ng-template>
+    </form>
+</div>

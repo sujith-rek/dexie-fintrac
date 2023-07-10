@@ -1,17 +1,15 @@
 import { DbService } from '../DbService/db.service';
-import { Expense,Income } from '../DexieService/dexie.service';
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatSort, MatSortModule} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { Expense } from '../DexieService/dexie.service';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ExpenseCardComponent } from '../expense-card/expense-card.component';
-import { Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar, MatSnackBarConfig, MatSnackBarModule, MatSnackBarRef } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-import { config } from 'rxjs';
 
 @Component({
   selector: 'app-expense',
@@ -20,36 +18,36 @@ import { config } from 'rxjs';
   standalone: true,
   imports: [
     CommonModule,
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatTableModule, 
-    MatSortModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatTableModule,
+    MatSortModule,
     MatPaginatorModule,
     MatIconModule,
     MatSnackBarModule,
     ExpenseCardComponent]
 })
 export class ExpenseComponent implements AfterViewInit {
-  dataSource : MatTableDataSource<Expense>;
-  showExpenseCard : boolean = false;
+  dataSource: MatTableDataSource<Expense>;
+  showExpenseCard: boolean = false;
 
-  @ViewChild(MatPaginator)paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
   constructor(
-    private dbService : DbService,
-    private snackBar : MatSnackBar
-  ){
-    const expenses : Expense[] = [];
+    private dbService: DbService,
+    private snackBar: MatSnackBar
+  ) {
+    const expenses: Expense[] = [];
     this.dbService.getExpenses().then(expenses => {
       expenses = expenses;
     });
     this.dataSource = new MatTableDataSource(expenses);
   }
 
-  displayedColumns: string[] = ['id','name', 'amount', 'category', 'date', 'mode'];
-// 💵
+  displayedColumns: string[] = ['id', 'name', 'amount', 'category', 'date', 'mode'];
+  // 💵
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -65,23 +63,23 @@ export class ExpenseComponent implements AfterViewInit {
     }
   }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.dbService.getExpenses().then(expenses => {
       this.dataSource.data = expenses;
       console.log(expenses);
     });
   }
 
-  addExpense(){
-      this.showExpenseCard = !this.showExpenseCard;
+  addExpense() {
+    this.showExpenseCard = !this.showExpenseCard;
   }
 
-  closeExpenseCard(card: boolean){
+  closeExpenseCard(card: boolean) {
     this.showExpenseCard = false;
     this.openSnackBar("Expense Added", "Close");
   }
 
-  showExp(){
+  showExp() {
     this.dbService.exportExpenses().then(exportData => {
       const blob = new Blob([exportData], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
@@ -94,13 +92,13 @@ export class ExpenseComponent implements AfterViewInit {
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     });
-      
+
   }
 
   openSnackBar(message: string, action: string) {
 
     this.snackBar.open(message, action);
-      
+
   }
 
 }
