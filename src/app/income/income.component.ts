@@ -74,17 +74,17 @@ export class IncomeComponent implements AfterViewInit {
 
   closeIncomeCard(card: boolean) {
     this.showIncomeCard = false;
-    this.openSnackBar("Expense Added", "Close");
+    this.openSnackBar("Income Added", "Close");
   }
 
   showExp() {
-    this.dbService.exportExpenses().then(exportData => {
+    this.dbService.exportIncomes().then(exportData => {
       const blob = new Blob([exportData], { type: 'text/csv' });
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.setAttribute('hidden', '');
       a.setAttribute('href', url);
-      a.setAttribute('download', 'expenses.csv');
+      a.setAttribute('download', 'income.csv');
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

@@ -74,4 +74,14 @@ export class DbService {
     return csv;
   }
 
+  async exportIncomes(){
+    const incomes = await this.getIncomes();
+    let csv = 'id,name,amount,category,date,mode\n';
+    incomes.forEach(income => {
+      csv += `${income.id},${income.name},${income.amount},${income.category},${income.date},${income.mode}\n`;
+    }
+    );
+    return csv;
+  }
+
 }
