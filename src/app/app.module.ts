@@ -15,7 +15,6 @@ import { EditCardComponent } from './edit-card/edit-card.component';
     AppComponent,
     HomeComponent,
     ErrorPageComponent,
-    EditCardComponent,
   ],
   imports: [
     BrowserModule,
