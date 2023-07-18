@@ -8,7 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { IncomeCardComponent } from '../income-card/income-card.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -24,7 +23,6 @@ import { CommonModule } from '@angular/common';
     MatSortModule,
     MatPaginatorModule,
     MatIconModule,
-    MatSnackBarModule,
     IncomeCardComponent]
 })
 export class IncomeComponent implements AfterViewInit {
@@ -36,7 +34,6 @@ export class IncomeComponent implements AfterViewInit {
 
   constructor(
     private dbService: DbService,
-    private snackBar: MatSnackBar
   ) {
     const income: Income[] = [];
     this.dbService.getIncomes().then(expenses => {
@@ -74,7 +71,6 @@ export class IncomeComponent implements AfterViewInit {
 
   closeIncomeCard(card: boolean) {
     this.showIncomeCard = false;
-    this.openSnackBar("Income Added", "Close");
   }
 
   showExp() {
@@ -92,13 +88,6 @@ export class IncomeComponent implements AfterViewInit {
     });
 
   }
-
-  openSnackBar(message: string, action: string) {
-
-    this.snackBar.open(message, action);
-
-  }
-
 
 
 }

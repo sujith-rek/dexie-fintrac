@@ -26,6 +26,23 @@
         }
 
     }
+
+    &__Buttonbar{
+        display: flex;
+        align-items: center;
+        justify-content:flex-start;
+
+        button{
+            height: 40px;
+            align-content: center;
+            // background-color: #1c8adb;
+            // border: 1px solid black;
+            // border-radius: 20px;
+        }
+        margin-bottom: 30px;;
+
+    }
+
 }
 
 .mat-mdc-form-field {

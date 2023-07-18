@@ -8,18 +8,29 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-expense-card',
   templateUrl: './expense-card.component.html',
   styleUrls: ['./expense-card.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule, FormsModule, CommonModule]
+  imports: [
+    MatButtonModule,
+     MatDividerModule, 
+     MatIconModule, 
+     FormsModule, 
+     CommonModule,
+     MatSnackBarModule]
 })
 export class ExpenseCardComponent {
-  constructor(private dbService: DbService) { }
+  constructor(
+    private dbService: DbService,
+    private snackBar: MatSnackBar
+  ) { }
 
-  @Input() showCard : boolean = false;
+  @Input() showCard: boolean = false;
   @Output() showCardChange = new EventEmitter<boolean>();
 
   show: boolean = false;
@@ -32,7 +43,7 @@ export class ExpenseCardComponent {
 
   onSubmit() {
 
-    const expense : Expense = {
+    const expense: Expense = {
       name: this.name,
       amount: this.amount,
       category: this.category,
@@ -41,12 +52,20 @@ export class ExpenseCardComponent {
     }
 
     this.dbService.addExpense(expense);
-    this.closeCard();    
+    this.closeCard();
+    this.openSnackBar("Expense Added", "Close");
+
 
   }
 
-  closeCard(){
+  closeCard() {
     this.showCardChange.emit(this.showCard);
+  }
+
+  openSnackBar(message: string, action: string) {
+
+    this.snackBar.open(message, action);
+
   }
 
 }

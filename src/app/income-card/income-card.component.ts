@@ -8,17 +8,23 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-income-card',
   templateUrl: './income-card.component.html',
   styleUrls: ['./income-card.component.scss'],
   standalone: true,
-  imports: [MatButtonModule, MatDividerModule, MatIconModule, FormsModule, CommonModule]
+  imports: [MatButtonModule, MatDividerModule, MatIconModule, FormsModule, CommonModule,MatSnackBarModule]
 
 })
 export class IncomeCardComponent {
-  constructor(private dbService: DbService) { }
+  constructor(
+    private dbService: DbService,
+    private snackBar: MatSnackBar
+
+    ) { }
   @Input() showCard : boolean = false;
   @Output() showCardChange = new EventEmitter<boolean>();
 
@@ -43,11 +49,21 @@ export class IncomeCardComponent {
 
     this.dbService.addIncome(income);
     this.closeCard();    
+    this.openSnackBar("Expense Added", "Close");
+
 
   }
 
   closeCard(){
     this.showCardChange.emit(this.showCard);
   }
+
+  openSnackBar(message: string, action: string) {
+
+    this.snackBar.open(message, action);
+
+  }
+
+
 
 }
