@@ -3,13 +3,14 @@
         <app-income-card [showCard]="showIncomeCard" (showCardChange)="closeIncomeCard($event)">
         </app-income-card>
     </div>
-    <button (click)="showExp()">
-        Download Incomes
-        <mat-icon>download</mat-icon>
-    </button>
-    <div>
-        <p>Add Income</p>
-        <button (click)="addIncome()">Add Income</button>
+    <div class="Income__Buttonbar">
+        <button (click)="showExp()">
+            Download Incomes
+            <mat-icon>download</mat-icon>
+        </button>
+        <div>
+            <button (click)="addIncome()">Add Income</button>
+        </div>
     </div>
     <mat-form-field>
         <mat-label>Filter</mat-label>
