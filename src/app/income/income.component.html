@@ -1,67 +1,60 @@
-
 <div class="Income__Container">
-    <div class="Income__Card"
-    *ngIf="showIncomeCard"
-    >
-        <app-income-card
-        [showCard] = "showIncomeCard" 
-        (showCardChange)="closeIncomeCard($event)">   
+    <div class="Income__Card" *ngIf="showIncomeCard">
+        <app-income-card [showCard]="showIncomeCard" (showCardChange)="closeIncomeCard($event)">
         </app-income-card>
     </div>
-    <button 
-    (click)="showExp()">
+    <button (click)="showExp()">
         Download Incomes
         <mat-icon>download</mat-icon>
     </button>
     <div>
         <p>Add Income</p>
-        <button
-        (click)="addIncome()"
-        >Add Income</button>
+        <button (click)="addIncome()">Add Income</button>
     </div>
     <mat-form-field>
         <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input />
     </mat-form-field>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
-        
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
-            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID.</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
 
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name. </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name.</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="amount">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount. </th>
-            <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount.</th>
+            <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
         </ng-container>
 
         <ng-container matColumnDef="category">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Category. </th>
-            <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Category.</th>
+            <td mat-cell *matCellDef="let element">{{ element.category }}</td>
         </ng-container>
 
         <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Date. </th>
-            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Date.</th>
+            <td mat-cell *matCellDef="let element">{{ element.date }}</td>
         </ng-container>
 
         <ng-container matColumnDef="mode">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Mode. </th>
-            <td mat-cell *matCellDef="let element"> {{element.mode}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Mode.</th>
+            <td mat-cell *matCellDef="let element">{{ element.mode }}</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    
+
         <tr class="mat-row" *matNoDataRow>
-            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            <td class="mat-cell" colspan="4">
+                No data matching the filter "{{ input.value }}"
+            </td>
         </tr>
     </table>
-    <hr/>
+    <hr />
     <mat-paginator [pageSizeOptions]="[5, 20, 50]" aria-label="Incomes per page"></mat-paginator>
 </div>
