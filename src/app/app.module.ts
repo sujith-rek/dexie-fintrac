@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { EditCardComponent } from './edit-card/edit-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ErrorPageComponent,
+    EditCardComponent,
   ],
   imports: [
     BrowserModule,
