@@ -1,7 +1,8 @@
 ## Dexie App
 
-## ToDo
-- [ ] use Snack bar for successfully adding expense
-- [ ] use Snack bar for successfully adding Income
+Finance tracker built with Angular with IndexedDB storage.
+DB services is provided by Dexie.js.
 
-- [ ] sorting and filters for expense and income
+### TODO
+- [ ] Add the features for visualizing the data
+- [ ] Add the features for managing the data

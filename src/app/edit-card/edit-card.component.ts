@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DexieService } from '../DexieService/dexie.service';
 
 @Component({
   selector: 'app-edit-card',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-card.component.scss']
 })
 export class EditCardComponent {
+
+  constructor(
+    private dexieService : DexieService,
+  ){}
+
+  
+
 
 }
