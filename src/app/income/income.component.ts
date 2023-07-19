@@ -80,10 +80,12 @@ export class IncomeComponent implements AfterViewInit {
 
   closeIncomeCard(card: boolean) {
     this.showIncomeCard = false;
+    window.location.reload();
   }
 
   closeEditCard(card: boolean) {
     this.showEditCard = false;
+    window.location.reload();
   }
 
   showExp() {

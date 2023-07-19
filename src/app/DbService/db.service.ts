@@ -36,9 +36,17 @@ export class DbService {
   //   await db.expenses.update(expense.id, expense);
   // }
 
-  // async updateIncome(income: Income){
-  //   await db.incomes.update(income.id, income);
-  // }
+  async updateIncome(id: number, name: string, amount: number, category: string, date: any, mode: string){
+    const income: Income = {
+      id: id,
+      name: name,
+      amount: amount,
+      category: category,
+      date: date,
+      mode: mode
+    }
+    await db.incomes.update(id, income);
+  }
 
   async getExpense(id: number){
     return await db.expenses.get(id);

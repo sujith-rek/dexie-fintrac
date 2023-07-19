@@ -18,12 +18,9 @@
         <input disabled={{editCard}} name="mode" type="text" placeholder="mode" [(ngModel)]="mode" required>
     </div>
     <div class="EditCard__Buttons">
-        <button mat-raised-button (click)="editCard = true">Edit</button>
-        <button class="EditCard--Form--Submit " type="submit" 
-        mat-raised-button
-        (click)="updateValues()"
-        >Update</button>
-        <button mat-raised-button>Delete</button>
+        <button mat-raised-button (click)="editCard = false" *ngIf="editCard">Edit</button>
+        <button class="EditCard--Form--Submit " type="submit" mat-raised-button (click)="updateValues()" *ngIf="!editCard">Update</button>
+        <button mat-raised-button (click)="deleteIncome(id)">Delete</button>
     </div>
 
 </div>

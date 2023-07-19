@@ -1,10 +1,10 @@
 import { Component, Output } from '@angular/core';
-import { DexieService } from '../DexieService/dexie.service';
 import { Input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventEmitter } from '@angular/core';
+import { DbService } from '../DbService/db.service';
 
 
 @Component({
@@ -17,7 +17,7 @@ import { EventEmitter } from '@angular/core';
 export class EditCardComponent {
 
   constructor(
-    private dexieService : DexieService,
+    private dexieService : DbService
   ){}
 
   @Input() id : number = 0;
@@ -39,11 +39,16 @@ export class EditCardComponent {
   }
 
   updateValues(){
-    this.editCard = false;
+    this.editCard = true;
+    this.dexieService.updateIncome(this.id, this.name, this.amount, this.category, this.date, this.mode);
+    this.closeCard();
   }
 
 
-  
+  deleteIncome(id: number){
+    this.dexieService.deleteIncome(id);
+    this.closeCard();
+  }
 
 
 }

@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ExpenseCardComponent } from '../expense-card/expense-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { EditCardComponent } from '../edit-card/edit-card.component';
 
 @Component({
   selector: 'app-expense',
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     MatSortModule,
     MatPaginatorModule,
     MatIconModule,
+    EditCardComponent,
     ExpenseCardComponent]
 })
 export class ExpenseComponent implements AfterViewInit {
