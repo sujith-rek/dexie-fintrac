@@ -41,6 +41,7 @@ export class IncomeComponent implements AfterViewInit {
   category: string = '';
   date: string = '';
   mode: string = '';
+  type: boolean = true;
 
   constructor(
     private dbService: DbService,
@@ -112,7 +113,6 @@ export class IncomeComponent implements AfterViewInit {
     this.category = row.category;
     this.date = row.date;
     this.mode = row.mode;
-    
   }
 
 

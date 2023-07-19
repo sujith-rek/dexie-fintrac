@@ -26,6 +26,7 @@ export class EditCardComponent {
   @Input() category: string = '';
   @Input() date: string = '';
   @Input() mode: string = '';
+  @Input() type: boolean = true;
   @Input() showEdit: boolean = false;
   @Output() showEditChange = new EventEmitter<boolean>();
 
@@ -38,16 +39,44 @@ export class EditCardComponent {
     this.showEditChange.emit(this.showEditCard);
   }
 
-  updateValues(){
+  updateIncome(){
     this.editCard = true;
     this.dexieService.updateIncome(this.id, this.name, this.amount, this.category, this.date, this.mode);
     this.closeCard();
   }
 
-
-  deleteIncome(id: number){
-    this.dexieService.deleteIncome(id);
+  updateExpense(){
+    this.editCard = true;
+    this.dexieService.updateExpense(this.id, this.name, this.amount, this.category, this.date, this.mode);
     this.closeCard();
+  }
+
+
+  deleteIncome(){
+    this.dexieService.deleteIncome(this.id);
+    this.closeCard();
+  }
+
+  deleteExpense(){
+    this.dexieService.deleteExpense(this.id);
+    this.closeCard();
+  }
+
+
+  deleteVal(){
+    if(this.type){
+      this.deleteIncome();
+    } else {
+      this.deleteExpense();
+    }
+  }
+
+  update(){
+    if(this.type){
+      this.updateIncome();
+    } else {
+      this.updateExpense();
+    }
   }
 
 

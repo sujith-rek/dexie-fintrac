@@ -6,6 +6,7 @@
     <div class="Income__Card" *ngIf="showEditCard">
         <app-edit-card [amount]="amount" [category]="category" [date]="date" [id]="id" [mode]="mode" [name]="name"
             [showEdit]="showEditCard"
+            [type] ="type"
             (showEditChange)="closeEditCard($event)"
             ></app-edit-card>
     </div>

@@ -30,6 +30,15 @@ import { EditCardComponent } from '../edit-card/edit-card.component';
 export class ExpenseComponent implements AfterViewInit {
   dataSource: MatTableDataSource<Expense>;
   showExpenseCard: boolean = false;
+  showEditCard: boolean = false;
+
+  id : number = 0;
+  name: string = '';
+  amount: number = 0;
+  category: string = '';
+  date: string = '';
+  mode: string = '';
+  type: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -74,6 +83,12 @@ export class ExpenseComponent implements AfterViewInit {
 
   closeExpenseCard(card: boolean) {
     this.showExpenseCard = false;
+    window.location.reload();
+  }
+
+  closeEditCard(card: boolean) {
+    this.showEditCard = false;
+    window.location.reload();
   }
 
   showExp() {
@@ -92,6 +107,14 @@ export class ExpenseComponent implements AfterViewInit {
 
   }
 
-  
+  editCard(row:any){
+    this.showEditCard = true;
+    this.id = row.id;
+    this.name = row.name;
+    this.amount = row.amount;
+    this.category = row.category;
+    this.date = row.date;
+    this.mode = row.mode;
+  }
 
 }
