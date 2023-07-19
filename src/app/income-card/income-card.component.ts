@@ -51,7 +51,6 @@ export class IncomeCardComponent {
     this.closeCard();    
     this.openSnackBar("Expense Added", "Close");
 
-
   }
 
   closeCard(){

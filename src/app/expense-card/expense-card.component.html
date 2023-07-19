@@ -21,6 +21,7 @@
             type="number"
             placeholder="amount"
             name="amount"
+            min="0"
             [(ngModel)]="amount"
             required
         >
@@ -50,7 +51,7 @@
         >
         <button
             mat-raised-button
-            *ngIf="!name || !amount || !category || !date || !mode ; else elseBlock"
+            *ngIf="!name || !amount || !category || !date || !mode || amount<0 ; else elseBlock"
             disabled>Submit</button>
         <ng-template #elseBlock>
             <button
