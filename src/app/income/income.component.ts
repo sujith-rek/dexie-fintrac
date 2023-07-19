@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { IncomeCardComponent } from '../income-card/income-card.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { EditCardComponent } from '../edit-card/edit-card.component';
 
 @Component({
   selector: 'app-income',
@@ -23,14 +24,23 @@ import { CommonModule } from '@angular/common';
     MatSortModule,
     MatPaginatorModule,
     MatIconModule,
+    EditCardComponent,
     IncomeCardComponent]
 })
 export class IncomeComponent implements AfterViewInit {
   dataSource: MatTableDataSource<Income>;
   showIncomeCard: boolean = false;
+  showEditCard: boolean = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+
+  id : number = 0;
+  name: string = '';
+  amount: number = 0;
+  category: string = '';
+  date: string = '';
+  mode: string = '';
 
   constructor(
     private dbService: DbService,
@@ -61,7 +71,6 @@ export class IncomeComponent implements AfterViewInit {
   ngOnInit(): void {
     this.dbService.getIncomes().then(expenses => {
       this.dataSource.data = expenses;
-      console.log(expenses);
     });
   }
 
@@ -71,6 +80,10 @@ export class IncomeComponent implements AfterViewInit {
 
   closeIncomeCard(card: boolean) {
     this.showIncomeCard = false;
+  }
+
+  closeEditCard(card: boolean) {
+    this.showEditCard = false;
   }
 
   showExp() {
@@ -87,6 +100,17 @@ export class IncomeComponent implements AfterViewInit {
       window.URL.revokeObjectURL(url);
     });
 
+  }
+
+  onRowClicked(row: any) {
+    this.showEditCard = true;
+    this.id = row.id;
+    this.name = row.name;
+    this.amount = row.amount;
+    this.category = row.category;
+    this.date = row.date;
+    this.mode = row.mode;
+    
   }
 
 

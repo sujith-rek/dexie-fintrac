@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ExpenseComponent } from './expense/expense.component';
 import { IncomeComponent } from './income/income.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { EditCardComponent } from './edit-card/edit-card.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,9 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'expense', component: ExpenseComponent},
   {path: 'income', component: IncomeComponent},
+  {
+    path:'edit', component: EditCardComponent
+  },
   {path: '**', component: ErrorPageComponent}
 ];
 

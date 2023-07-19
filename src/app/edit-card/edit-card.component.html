@@ -1,10 +1,29 @@
 <div class="EditCard">
-
-    <div>
-        <h2 class="EditCard--Title">Income ID {{ id }}</h2>
+    <div class="EditCard--Header">
+        <h2>Income ID {{ id }}</h2>
         <button mat-icon-button (click)="closeCard()">
             <mat-icon>close</mat-icon>
         </button>
+    </div>
+    <div class="EditCard--Form">
+        <label for="name">Name</label>
+        <input disabled={{editCard}} type="text" placeholder="name" name="name" [(ngModel)]="name" required>
+        <label for="amount">Amount</label>
+        <input disabled={{editCard}} type="number" placeholder="amount" name="amount" [(ngModel)]="amount" required>
+        <label for="category">Category</label>
+        <input disabled={{editCard}} type="text" placeholder="category" name="category" [(ngModel)]="category" required>
+        <label for="date">Date</label>
+        <input disabled={{editCard}} type="date" placeholder="date" name="date" [(ngModel)]="date" required>
+        <label for="mode">Mode</label>
+        <input disabled={{editCard}} name="mode" type="text" placeholder="mode" [(ngModel)]="mode" required>
+    </div>
+    <div class="EditCard__Buttons">
+        <button mat-raised-button (click)="editCard = true">Edit</button>
+        <button class="EditCard--Form--Submit " type="submit" 
+        mat-raised-button
+        (click)="updateValues()"
+        >Update</button>
+        <button mat-raised-button>Delete</button>
     </div>
 
 </div>

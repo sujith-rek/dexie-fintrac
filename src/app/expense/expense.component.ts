@@ -63,7 +63,6 @@ export class ExpenseComponent implements AfterViewInit {
   ngOnInit(): void {
     this.dbService.getExpenses().then(expenses => {
       this.dataSource.data = expenses;
-      console.log(expenses);
     });
   }
 

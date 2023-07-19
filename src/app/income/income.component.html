@@ -3,6 +3,12 @@
         <app-income-card [showCard]="showIncomeCard" (showCardChange)="closeIncomeCard($event)">
         </app-income-card>
     </div>
+    <div class="Income__Card" *ngIf="showEditCard">
+        <app-edit-card [amount]="amount" [category]="category" [date]="date" [id]="id" [mode]="mode" [name]="name"
+            [showEdit]="showEditCard"
+            (showEditChange)="closeEditCard($event)"
+            ></app-edit-card>
+    </div>
     <div class="Income__Buttonbar">
         <button (click)="showExp()">
             Download Incomes
@@ -48,11 +54,10 @@
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row 
-        *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-row (click)="onRowClicked(row)" *matRowDef="let row; columns: displayedColumns"></tr>
         <!-- (click)="" -->
 
-        
+
 
         <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">
