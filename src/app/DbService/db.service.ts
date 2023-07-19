@@ -32,9 +32,17 @@ export class DbService {
     await db.incomes.delete(id);
   }
 
-  // async updateExpense(expense: Expense){
-  //   await db.expenses.update(expense.id, expense);
-  // }
+  async updateExpense(id: number, name: string, amount: number, category: string, date: any, mode: string){
+    const expense: Expense = {
+      id: id,
+      name: name,
+      amount: amount,
+      category: category,
+      date: date,
+      mode: mode
+    }
+    await db.expenses.update(id, expense);
+  }
 
   async updateIncome(id: number, name: string, amount: number, category: string, date: any, mode: string){
     const income: Income = {
