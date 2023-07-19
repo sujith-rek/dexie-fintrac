@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { EditCardComponent } from './edit-card/edit-card.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { EditCardComponent } from './edit-card/edit-card.component';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [RouterModule],
   bootstrap: [AppComponent]
