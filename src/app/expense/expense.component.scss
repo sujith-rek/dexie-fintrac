@@ -36,15 +36,14 @@
         display: flex;
         align-items: center;
         justify-content:flex-start;
+        padding: 0px 0px 20px 0px;
 
         button{
+            margin-right: 20px;
+            text-decoration: none;
             height: 40px;
-            align-content: center;
-            // background-color: #1c8adb;
-            // border: 1px solid black;
-            // border-radius: 20px;
         }
-        margin-bottom: 30px;;
+        
 
     }
 
@@ -53,4 +52,10 @@
 .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
+}
+
+app-expense-card{
+    button{
+        background-color: #1c8adb;
+    }
 }
