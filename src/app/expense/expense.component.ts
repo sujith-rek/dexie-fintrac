@@ -54,7 +54,7 @@ export class ExpenseComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(expenses);
   }
 
-  displayedColumns: string[] = ['id', 'name', 'amount', 'category', 'date', 'mode'];
+  displayedColumns: string[] = [ 'name', 'amount', 'category', 'date', 'mode'];
   // 💵
 
   ngAfterViewInit() {

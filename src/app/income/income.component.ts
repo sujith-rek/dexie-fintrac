@@ -53,7 +53,7 @@ export class IncomeComponent implements AfterViewInit {
     this.dataSource = new MatTableDataSource(income);
   }
 
-  displayedColumns: string[] = ['id', 'name', 'amount', 'category', 'date', 'mode'];
+  displayedColumns: string[] = ['name', 'amount', 'category', 'date', 'mode'];
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
