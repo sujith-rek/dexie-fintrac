@@ -2,7 +2,7 @@
 
     &__Container{
         margin: 10px;
-        padding: 40px;
+        padding: 10px 40px;
 
         @media  (max-width: 768px) {
             padding: 10px;
@@ -12,12 +12,11 @@
 
     &__Card{
         position: fixed;
+        width: fit-content;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: #fff;
-        width: 500px;
-        height: 500px;
+        background: #52af6e;
         z-index: 9999;
         border-radius: 5px;
         box-shadow: 0 0 10px #ccc;
@@ -30,18 +29,23 @@
             background-color: #1c8adb;
         }
 
+       
+
+
     }
 
     &__Buttonbar{
         display: flex;
         align-items: center;
         justify-content:flex-start;
+        padding: 0px 0px 20px 0px;
 
         button{
+            margin-right: 20px;
+            text-decoration: none;
             height: 40px;
-            align-content: center;
         }
-        margin-bottom: 30px;;
+        
 
     }
 
@@ -50,4 +54,10 @@
 .mat-mdc-form-field {
     font-size: 14px;
     width: 100%;
+}
+
+app-income-card{
+    button{
+        background-color: #1c8adb;
+    }
 }

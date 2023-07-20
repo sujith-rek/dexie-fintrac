@@ -2,7 +2,8 @@
 
     &__Container{
         margin: 10px;
-        padding: 40px;
+        padding: 10px 40px;
+        
 
         @media  (max-width: 768px) {
             padding: 10px;
@@ -15,9 +16,8 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: #fff;
-        width: 500px;
-        height: 500px;
+        background: #52af6e;
+        width:fit-content;
         z-index: 9999;
         border-radius: 5px;
         box-shadow: 0 0 10px #ccc;
